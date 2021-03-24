@@ -1,0 +1,17 @@
+.timer-container {
+    border-radius: 15px 50px;
+    background-color: rgb(141, 130, 211);
+    padding: 40px;
+    width: 400px;
+    margin:auto;
+    text-align: center;
+}
+.focus {
+
+}
+
+#mins-display, #secs-display {
+    font-size: 7.5rem;
+    color: white;
+    padding: 20px;
+}

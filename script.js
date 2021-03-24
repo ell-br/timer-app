@@ -29,26 +29,41 @@ function startTimer() {
 
 document.querySelector("#start-btn").addEventListener("click", startTimer());
 */
-var mins = 25;
+var focusPeriod = 25;
+var timeLeft = focusPeriod*60;
 
 function startTimer() {
-    setInterval(countDownSecs, 1000);
-    setInterval(countDownMins, 60000);
-    var secs = mins*60;
+    var int = setInterval(countDownSecs, 1000);
+    
+    document.querySelector("#start-btn").disabled = true;
+    keepCounting = true;
     
 
     function countDownSecs() {
+      if (keepCounting) {
+        timeLeft-=1;
+        var secs = timeLeft%60;
+        var mins = Math.floor(timeLeft/60);
+        console.log(secs + mins);
         
-        secs-=1;
-        console.log(secs%60);
-        document.querySelector("#secs-display").innerHTML = secs%60;
+        document.querySelector("#secs-display").innerHTML = secs > 9 ? secs : "0" + secs;
+        document.querySelector("#mins-display").innerHTML = mins > 9 ? mins + " :" : "0" + mins + " :";
+      } else {
+        clearInterval(int);
+        keepCounting = true;
+      }
+      
+        
+        
     }
-    function countDownMins() {
-        mins-=1;
-        console.log(mins);
-        document.querySelector("#mins-display").innerHTML = mins;
-    }
-    countDownMins();
 }
 
+function stopTimer() {
+  document.querySelector("#start-btn").disabled = false;
+  keepCounting = false;
+}
+
+
+
 document.querySelector("#start-btn").addEventListener("click", startTimer);
+document.querySelector("#pause-btn").addEventListener("click", stopTimer);
