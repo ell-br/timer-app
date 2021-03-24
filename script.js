@@ -1,36 +1,8 @@
 var keepCounting = true;
-
-/*
-function startTimer() {
-    var id = setInterval(countDown, 1000);
-
-    function countDown() {
-
-      if (keepCounting) {
-        seconds--;
-        document.querySelector("#start-btn").disabled = true;
-
-        if (seconds >= 60) {
-          mins = Math.floor(seconds / 60);
-          secondsMod = seconds%60;
-          document.querySelector("#timer-display").innerHTML = mins + ":"+ secondsMod;  
-        } else {
-          document.querySelector("#timer-display").innerHTML = mins + seconds;
-        }
-        console.log(mins + seconds);
-        
-      } else {
-        clearInterval(id);
-        keepCounting = true;
-      }
-    }
-  }
-
-
-document.querySelector("#start-btn").addEventListener("click", startTimer());
-*/
-var focusPeriod = 25;
-var timeLeft = focusPeriod*60;
+var timerElem = document.getElementById("timer-container");
+var periodLength = 25;
+var timeLeft = periodLength*60;
+var mode = "focus";
 
 function startTimer() {
     var int = setInterval(countDownSecs, 1000);
@@ -63,7 +35,36 @@ function stopTimer() {
   keepCounting = false;
 }
 
+function focusTime() {
+  timerElem.style.backgroundColor = "palevioletred";
+  periodLength = 25;
+  document.querySelector("#mode-title").innerHTML = "Focus";
+  document.querySelector("#toggle-btn").innerHTML = "Break";
+  document.querySelector("#mins-display").innerHTML = periodLength + " : ";
+  console.log("focus time");
+}
+
+function breakTime() {
+  timerElem.style.backgroundColor = "rgb(141, 130, 211)";
+  periodLength = 5;
+  document.querySelector("#mode-title").innerHTML = "Break";
+  document.querySelector("#toggle-btn").innerHTML = "Focus";
+  document.querySelector("#mins-display").innerHTML = "0" + periodLength + " : ";
+  console.log("break time");
+}
+
+function toggleMode() {
+  if (mode=="focus") {
+    mode = "break";
+    breakTime();
+  } else if (mode == "break") {
+    mode = "focus";
+    focusTime();
+  }
+}
+
 
 
 document.querySelector("#start-btn").addEventListener("click", startTimer);
 document.querySelector("#pause-btn").addEventListener("click", stopTimer);
+document.querySelector("#toggle-btn").addEventListener("click", toggleMode);

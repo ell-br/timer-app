@@ -1,17 +1,69 @@
-.timer-container {
-    border-radius: 15px 50px;
-    background-color: rgb(141, 130, 211);
+body {
+    font-family: sans-serif;
+    background-color: powderblue;
+}
+
+h1 {
+    color: white;
+    font-size: xx-large;
+}
+
+
+#timer-container {
+    position: relative;
+    border-radius: 15px 100px;   
     padding: 40px;
-    width: 400px;
+    width: 500px;
     margin:auto;
     text-align: center;
+    background-color: palevioletred;
+    box-shadow: -4px 4px 10px 6px rgb(114, 167, 173);
 }
-.focus {
 
+.focus {
+    background-color: palevioletred;
+}
+.break {
+   background-color: rgb(141, 130, 211);
 }
 
 #mins-display, #secs-display {
     font-size: 7.5rem;
     color: white;
     padding: 20px;
+}
+
+#start-btn, #pause-btn {
+    border:none;
+    height: 20px;
+    padding: 20px;
+    padding-bottom: 30px;
+    font-size: 15px;
+    border: solid 2px rgb(141, 130, 211);
+}
+
+#start-btn:hover, #pause-btn:hover {
+    border: solid 2px palevioletred;
+}
+
+
+#start-btn {
+   border-radius: 15px 5px 5px 50px; 
+}
+
+#pause-btn {
+  border-radius: 5px 50px 15px 5px;  
+}
+
+#toggle-btn {
+    position: absolute;
+    bottom:0px;
+    left: 250px;
+    right: 190px;
+    padding: 15px;
+    padding-top: 10px;
+    font-size: large;
+    border-radius: 50px 50px 0px 0px;
+    border: none;
+
 }
