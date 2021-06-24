@@ -13,6 +13,8 @@ function startTimer() {
 
     function countDownSecs() {
       if (keepCounting) {
+        mode == "focus" ? periodLength = 25 : periodLength = 5;
+
         timeLeft-=1;
         var secs = timeLeft%60;
         var mins = Math.floor(timeLeft/60);
@@ -50,6 +52,7 @@ function breakTime() {
   document.querySelector("#mode-title").innerHTML = "Break";
   document.querySelector("#toggle-btn").innerHTML = "Focus";
   document.querySelector("#mins-display").innerHTML = "0" + periodLength + " : ";
+  document.querySelector("#secs-display").innerHTML = "00";
   console.log("break time");
 }
 
