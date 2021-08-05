@@ -4,10 +4,11 @@ var periodLength = 25;
 var nextPomo = 0;
 var mode = "focus";
 var paused = false;
+var timeLeft = 0;
 
 function startTimer() {
     if (!paused) {
-      var timeLeft = periodLength*60;
+      timeLeft = periodLength * 60;
     }
     var int = setInterval(countDownSecs, 1000);
     document.querySelector("#start-btn").disabled = true;
@@ -40,6 +41,7 @@ function pauseTimer() {
   document.querySelector("#start-btn").disabled = false;
   keepCounting = false;
   paused = true;
+
 }
 
 function focusTime() {
@@ -70,6 +72,7 @@ function toggleMode() {
     mode = "focus";
     focusTime();
   }
+  paused = false;
 }
 
 function pomoComplete() {
